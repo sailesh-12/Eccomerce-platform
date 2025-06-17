@@ -37,12 +37,28 @@ const Cart = () => {
 		window.location.reload();
 	}
 	const handleCheckout = async () => {
-		const response = await axios.post('https://eccomerce-backend-11dr.onrender.com/api/checkout', {
-		  totalAmount: getTotal(), // e.g., 10.99
-		  totalQuantity: getTotalQuantity(), // e.g., 3
-		});
-		window.location.href = response.data.url;
-	  };
+  try {
+    const response = await axios.post(
+      'https://eccomerce-backend-11dr.onrender.com/api/checkout',
+      {
+        totalAmount: getTotal(),          // e.g., 10.99
+        totalQuantity: getTotalQuantity() // e.g., 3
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    window.location.href = response.data.url;
+
+  } catch (error) {
+    console.error('Checkout Error:', error.response?.data || error.message);
+    alert('Failed to initiate checkout. Please try again later.');
+  }
+};
+
 	  
 	const subTotal = getTotal();
 	const quantities = getTotalQuantity();
