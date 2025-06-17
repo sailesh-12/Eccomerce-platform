@@ -37,7 +37,7 @@ const Cart = () => {
 		window.location.reload();
 	}
 	const handleCheckout = async () => {
-		const response = await axios.post('http://localhost:3000/api/checkout', {
+		const response = await axios.post('https://eccomerce-backend-11dr.onrender.com/api/checkout', {
 		  totalAmount: getTotal(), // e.g., 10.99
 		  totalQuantity: getTotalQuantity(), // e.g., 3
 		});
