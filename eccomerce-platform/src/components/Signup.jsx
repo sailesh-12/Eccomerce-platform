@@ -13,7 +13,7 @@ const Signup = () => {
 		e.preventDefault();
 		try{
 			setLoading(true);
-			const response=await axios.post("http://localhost:3000/api/auth/signup",{
+			const response=await axios.post("https://eccomerce-backend-11dr.onrender.com/api/auth/signup",{
 				username,email,password
 			})
 			console.log(response);

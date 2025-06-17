@@ -3,11 +3,12 @@ import Vegetables from './Vegetables';
 import { Link } from 'react-router-dom';
 
 const Fruits = () => {
-	const [cartCount, setCartCount] = useState(0);
+	
 	const [filter, setFilter] = useState('all');
 	const [quantities, setQuantities] = useState({});
 	const [sortBy, setSortBy] = useState('name');
 	const [cartItems, setCartItems] = useState([]);
+	const [cartCount, setCartCount] = useState(0);
 	const [fruits,setFruits]=useState([]);
 	const [loading,setLoading]=useState(true);
 	const [error,setError]=useState(null);
@@ -15,13 +16,21 @@ const Fruits = () => {
 	useEffect(()=>{
 		fetchFruits();
 	},[]);
+	useEffect(() => {
+	const storedCart = JSON.parse(localStorage.getItem('fruits-cart')) || [];
+	setCartItems(storedCart);
+
+	const total = storedCart.reduce((acc, item) => acc + item.quantity, 0);
+	setCartCount(total);
+}, []);
+
 
 	const fetchFruits=async ()=>{
 		setLoading(true);
 		try{
-			const response=await fetch('http://localhost:3000/api/fruits');
+			const response=await fetch('https://eccomerce-backend-11dr.onrender.com/api/fruits');
 			console.log(response);																																		
-
+			
 			if(!response.ok){																	
 				throw new Error('Failed to fetch fruits');
 			}
@@ -91,7 +100,8 @@ const Fruits = () => {
 		<div className=''>
 			<nav className='bg-green-600 fixed p-4 top-0 left-0 right-0 z-10 text-white'>
 				<div className='container mx-auto flex justify-between items-center '>
-					<h1 className='text-2xl font-bold'><Link className='cursor-pointer text-2xl' to={(e) => e.preventDefault()} >Fruits</Link></h1>
+					<Link className='cursor-pointer text-2xl font-bold' to='/dashboard' ><h1 className='text-2xl font-bold '></h1>Fruits</Link>
+					
 					<div className='flex items-center gap-4'>
 						<select className='bg-green-700 text-white px-3 py-1 rounded outline-none focus:ring-green-200' value={sortBy}
 							onChange={(e) => setSortBy(e.target.value)} name="" id="">

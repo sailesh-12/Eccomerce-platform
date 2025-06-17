@@ -20,7 +20,7 @@ const Provisions = () => {
   const fetchProvisions=async()=>{
     setLoading(true);
     try{
-      const response=await fetch('http://localhost:3000/api/provisions');
+      const response=await fetch('https://eccomerce-backend-11dr.onrender.com/api/provisions');
       console.log(response);
       
       if(!response.ok){
@@ -111,7 +111,7 @@ const Provisions = () => {
         <div className='container mx-auto flex justify-between items-center'>
           <div className='flex items-center gap-6'>
             <h1 className='text-2xl font-bold'>
-              <Link to="/provisions" className='cursor-pointer text-2xl'>
+              <Link to="/dashboard" className='cursor-pointer text-2xl'>
                 Provisions
               </Link>
             </h1>

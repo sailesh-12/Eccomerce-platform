@@ -5,8 +5,15 @@ import { Link } from 'react-router-dom'
 import '../index.css'
 const DashBoard = () => {
 	return (
-		<div className='bg-green-200 min-h-screen px-4 sm:px-8 lg:px-20 py-8'>
-			<div className="relative w-full h-[30vh] rounded-md  overflow-hidden">
+		<div className='bg-green-200 min-h-screen  px-4 sm:px-8 lg:px-20 py-8'>
+			<Link
+				to="/home"
+				className="text-sm  hover:shadow-lg p-2 font-extrabold rounded-md bg-red-400 cursor-pointer"
+			>
+				Back to Home
+			</Link>
+
+			<div className="relative w-full h-[30vh] rounded-md mt-4 overflow-hidden">
 				<img
 					src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-summer-atmosphere-restaurant-supermarket-vegetable-psd-layered-promotion-background-image_159939.jpg"
 					alt="FreshMart Banner"

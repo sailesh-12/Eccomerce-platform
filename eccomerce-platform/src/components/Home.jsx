@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen">
 			{/* Navigation */}
 			<nav className="bg-white shadow-sm">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between h-16 items-center">
 						<div className="flex-shrink-0">
-							<h1 className="text-2xl font-bold text-green-600">FreshMart</h1>
+							<Link to='/home'><h1 className="text-2xl font-bold text-green-600">FreshMart</h1></Link>
 						</div>
 						<div className="hidden sm:flex sm:space-x-8">
 							<Link to="/vegetables" className="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md">Vegetables</Link>
@@ -21,7 +21,7 @@ const Home = () => {
 			</nav>
 
 			{/* Hero Section */}
-			<div className="relative bg-white overflow-hidden">
+			<div className="relative bg-green-300 overflow-hidden">
 				<div className="max-w-7xl mx-auto">
 					<div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
 						<main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">

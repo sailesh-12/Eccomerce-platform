@@ -15,10 +15,17 @@ const Vegetables = () => {
   useEffect(() => {
     fetchVegetables();
   }, []);
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItems(storedCart);
+  
+    const total = storedCart.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(total);
+  }, []);
 
   const fetchVegetables = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/vegetables');
+      const response = await fetch('https://eccomerce-backend-11dr.onrender.com/api/vegetables');
       console.log(response);
 
       if (!response.ok) {
@@ -99,7 +106,9 @@ const Vegetables = () => {
     <div>
       <nav className="bg-green-600 text-white p-4 fixed top-0 left-0 right-0 z-10">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Vegetable Store</h1>
+          <Link to='/dashboard'>
+             <h1 className="text-2xl font-bold">Vegetable Store</h1>
+          </Link>
           <div className="flex items-center gap-4">
             <select
               className="bg-green-700 text-white px-3 py-1 rounded outline-none focus:ring-green-200"

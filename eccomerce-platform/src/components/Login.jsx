@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-      const response=await axios.post("http://localhost:3000/api/auth/login",{
+      const response=await axios.post("https://eccomerce-backend-11dr.onrender.com/api/auth/login",{
         username,password
       })
       console.log(response);
