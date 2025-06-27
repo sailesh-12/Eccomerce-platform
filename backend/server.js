@@ -67,8 +67,8 @@ app.post('/api/checkout', async (req, res) => {
           quantity: 1, // All items as a single bundle
         },
       ],
-      success_url: 'http://localhost:3000/success',
-      cancel_url: 'http://localhost:3000/cancel',
+      success_url: 'https://eccomerce-backend-11dr.onrender.com/success',
+      cancel_url: 'https://eccomerce-backend-11dr.onrender.com/cancel',
     });
 
     res.json({ url: session.url });
@@ -79,11 +79,11 @@ app.post('/api/checkout', async (req, res) => {
 });
 
 app.get('/success',(req,res)=>{
-  res.sendFile(path.join(__dirname, '../eccomerce-platform/public/success.html'));
+  res.sendFile(path.join(__dirname, './success.html'));
 });
 
 app.get('/cancel',(req,res)=>{
-  res.sendFile(path.join(__dirname, '../eccomerce-platform/public/cancel.html'));
+  res.sendFile(path.join(__dirname, './cancel.html'));
 });
 
 app.listen(PORT, () => {

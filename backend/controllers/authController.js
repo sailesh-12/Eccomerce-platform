@@ -55,16 +55,20 @@ export const login = async (req, res) => {
 	try{
 		const {username,password}=req.body;
 		console.log(username,password);
-		
 		if(!username || !password){
 			return res.status(400).json({message:"All fields are required"});
 		}
 		const user=await User.findOne({username});
+		console.log(user);
+		
+		
 		if(!user){
 			return res.status(401).json({message:"Invalid credentials"});
 		}
 		 
 		const isPasswordValid=await bcrypt.compare(password,user.password);
+		console.log(isPasswordValid);
+		
 		if(!isPasswordValid){
 			return res.status(401).json({message:"Invalid credentials"});
 		}
